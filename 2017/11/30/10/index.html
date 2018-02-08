@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.3" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="OWASP," />
+
+
+<meta name="description" content="OWASP123开放式Web应用程序安全项目（OWASP，Open Web Application Security Project）是一个组织，它提供有关计算机和互联网应用程序的公正、实际、有成本效益的信息。其目的是协助个人、企业和机构来发现和使用可信赖软件">
+<meta name="keywords" content="OWASP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OWASP Top 10">
+<meta property="og:url" content="https://zzc2018.description/2017/11/30/10/index.html">
+<meta property="og:site_name" content="入沐三分">
+<meta property="og:description" content="OWASP123开放式Web应用程序安全项目（OWASP，Open Web Application Security Project）是一个组织，它提供有关计算机和互联网应用程序的公正、实际、有成本效益的信息。其目的是协助个人、企业和机构来发现和使用可信赖软件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-06T17:15:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OWASP Top 10">
+<meta name="twitter:description" content="OWASP123开放式Web应用程序安全项目（OWASP，Open Web Application Security Project）是一个组织，它提供有关计算机和互联网应用程序的公正、实际、有成本效益的信息。其目的是协助个人、企业和机构来发现和使用可信赖软件">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zzc2018.description/2017/11/30/10/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>OWASP Top 10 | 入沐三分</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">入沐三分</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">入沐三分</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-站点地图">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zzc2018.description/2017/11/30/10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="入沐三分">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="入沐三分">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OWASP Top 10</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T13:05:28+08:00">2017-11-30</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络安全/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="OWASP"><a href="#OWASP" class="headerlink" title="OWASP"></a>OWASP</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开放式Web应用程序安全项目（OWASP，Open Web Application Security Project）是一个组织，</span><br><span class="line">它提供有关计算机和互联网应用程序的公正、实际、有成本效益的信息。其目的是协助个人、企业和</span><br><span class="line">机构来发现和使用可信赖软件</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="OWASP-Top-10-十大风险"><a href="#OWASP-Top-10-十大风险" class="headerlink" title="OWASP Top 10 十大风险"></a>OWASP Top 10 十大风险</h1><p><a href="http://blog.csdn.net/lifetragedy/article/details/52573897" target="_blank" rel="noopener">CSDN博客介绍</a><br><strong>1、注入</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">通过应用程序缺少对输入内容进行安全性检查</span><br><span class="line">几乎任何数据源都能成为注入载体</span><br><span class="line">将不受信任的数据作为命令或者查询的一部分发送给解释器，解释器会把收到的数据转换成指令执行</span><br><span class="line">攻击者可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据</span><br><span class="line">常见的有SQL注入、OS注入、LDAP注入、Xpath、Hibernate等</span><br><span class="line">注入漏洞很容易通过审查代码发现，扫描器和模糊测试工具可帮助攻击者找到这些漏洞</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注入漏洞可导致数据丢失或数据破坏、缺乏可审计性或是拒绝服务。</span><br><span class="line">注入漏洞有时甚至能导致完全接管主机</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">防止注入漏洞需要将数据与命令语句、查询语句分隔开来。</span><br><span class="line">选择使用安全的API，避免使用解释器</span><br><span class="line">对输入的特殊字符进项转移处理</span><br><span class="line">使用白名单来规范化的输入验证方法</span><br><span class="line">使用PreparedStatement</span><br></pre></td></tr></table></figure></p>
+<p><strong>2、失效的身份认证和会话管理</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过错误的使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、秘钥或会话令牌，</span><br><span class="line">利用其它开发中的缺陷来冒充其他用户的身份</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">攻击者能够获得有效的用户名和密码组合，包括证书填充、默认的管理账户、自动的蛮力字典攻击工具，以及高级的GPU破解工具</span><br><span class="line">一旦攻击成功，攻击者能执行合法用户的任何操作，因此特权账户会造成更大的破坏。</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">不要使用发送或部署认证的凭证，特别是管理员用户</span><br><span class="line">使用非过时的哈希技术来存储密码，比如Argon2或PBKDF2，并使用充分的工作因素来防止GPU破解攻击</span><br><span class="line">执行弱密码检查</span><br><span class="line">确认注册、凭据恢复和API路径，通过对所有的输出结果使用相同的消息，用以抵御账户枚举攻击</span><br><span class="line">在尽可能的地方实现多因素身份验证，以防止凭据的填充、暴力破解、自动化和凭据窃取攻击</span><br><span class="line">当凭证填充、蛮力和其他攻击被检测到，日志记录身份验证失败，并警告管理员</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、跨站脚本（XSS）</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">跨站脚本是最普遍的web应用安全漏洞。当应用程序的新网页中包含不受信任的、未经过恰当验证或转义的数据，或者使用可以创建JavaScript的浏览器API更新现有网页时，几会出现XSS缺陷。</span><br><span class="line">存在三种形式的XSS类型，通常针对用户浏览器：</span><br><span class="line">	反射式XSS、存储式XSS和基于DOM的XSS</span><br><span class="line">自动化工具能够检测并利用所有的三种XSS形式，并且还有方便攻击者利用的框架。</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">攻击者能在受害者浏览器中执行脚本以</span><br><span class="line">劫持用户会话、污损网站、插入恶意内容、重定向用户到恶意站点，等等</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">防止XSS需要将不可信数据与动态的浏览器内容分开。</span><br><span class="line">验证输入，检查每个输入的有效性。比如检查输入类型和输入长度。</span><br><span class="line">使用ESAPI验证实例</span><br><span class="line">编码输出，用来确保字符串被视为数据，而不是作为HTML元字符被浏览器解析</span><br></pre></td></tr></table></figure></p>
+<p><strong>4、不安全的对象直接引用</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">不安全的对象直接引用是指一个已授权的用户，通过修改访问时的一个参数，从而访问到原本没有得到授权的对象</span><br><span class="line">Web应用往往在生成Web页面时用到它的真实名字，并且不会对所有的访问检查用户权限，</span><br><span class="line">所以就造成了不安全的对象直接引用的漏洞。</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这种漏洞能损害参数所引用的所有数据。</span><br><span class="line">攻击者能够很容易的访问该类型的所有数据</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用基于用户或会话的间接对象访问，这样能防止攻击者直接攻击未授权资源</span><br><span class="line">访问检查，对于任何来自不受信任源所使用的所有直接对象引用都进行访问控制检测</span><br><span class="line">避免在URL或网页中直接引用内部文件名或数据库关键字</span><br><span class="line">可使用自定义映射名称来取代直接对象名</span><br><span class="line">锁定网站服务器上的所有目录和文件夹，设置访问权限</span><br><span class="line">验证用户输入和URL请求，拒绝包含./和../的请求</span><br></pre></td></tr></table></figure></p>
+<p><strong>5、伪造跨站请求（CSRF）</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">跨站请求伪造是利用了网站允许攻击者预测特定操作的所有细节这一特点</span><br><span class="line">由于浏览器自动发送会话cookie等认证凭证，导致攻击者能够创建恶意的web页面来产生伪造的请求</span><br><span class="line">这些伪造请求很难和合法请求区分开</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">攻击者能够在用户不知情时让用户修改任何允许修改的数据，执行任何用户允许的操作</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给每个HTTP请求添加一个不可预测的令牌， 并保证该令牌对每个用户是唯一的</span><br><span class="line">可以将独有的令牌包含在隐藏的字段中，通过HTTP请求发送，避免在URL中暴露</span><br><span class="line">要求用户重新认证或者判断他是一个真实的用户</span><br></pre></td></tr></table></figure></p>
+<p><strong>6、安全配置错误</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">安全配置错误是数据中最常见的缺陷，这部分包含：</span><br><span class="line">	手动配置错误、临时配置(或根本不配置)、不安全的默认设置、开启 S3 bucket、不当的HTTP标头配置、</span><br><span class="line">	包含敏感信息的错误信息、未及时修补或升级(或根本不修补和升级)系统、框架、依赖项和组件。</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">攻击者通过访问默认账户、未使用的网页、未安装的补丁的漏洞、未被保护的文件和目录，以获得对系统未授权的访问</span><br><span class="line">有时这些漏洞可能导致系统的完全攻破</span><br><span class="line">业务影响取决于应用程序和数据的保护需求。</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">移除任何不需要的功能、组件、文档、示例。移除不适用的依赖和框架。</span><br><span class="line">自动化部署安装，保证开发，QA、产品环境的配置尽量相同，减少部署一个新安全环境的耗费</span><br><span class="line">及时了解并部署每个环境的软件更新和补丁信息</span><br><span class="line">使用提供有效分离和安全性强大的架构</span><br><span class="line">实施漏洞和安全审计，以帮助检查错误的配置或者未安装的补丁</span><br></pre></td></tr></table></figure></p>
+<p><strong>7、功能级访问控制缺失</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同样也是与认证相关的漏洞， 与不安全的对象直接引用类似，不同的是这个漏洞是说系统已经对URL的访问进行了限制，但是这种限制实际并没有生效。常见的错误是，在用户认证之后只显示给用户认证过的页面和菜单选项，而实际上这些只是表层上的访问控制不能真正生效，攻击者能够很容易的伪造请求，直接访问未被授权的页面。</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">攻击者很容易就能把网址改成享有特权的网页</span><br><span class="line">这样就可以使用匿名或者普通用户访问未被授权的私人页面</span><br><span class="line">从而提升未授权功能和相关数据信息</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">检查管理员权限的过程并确保能够容易的进行升级和审计， 切记硬编码</span><br><span class="line">默认缺省情况下，应该拒绝所有访问的执行权限。对于每个功能的访问，需要明确的角色授权</span><br><span class="line">检查每个功能分配的权限合理有效</span><br></pre></td></tr></table></figure></p>
+<p><strong>8、未验证的重定向和转发</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Web应用中重定向是极为普遍的，并且通常重定向所引向的是带有用户输入参数的URL，而如果这些重定向未被验证那么攻击者就可以引导用户访问他们所要用户访问的站点。同样转发也是很普遍的，本质上是在同一个应用中对一个新页面发送请求，并且有时是用参数来定义目标页面的。同样如果参数未被验证，那么攻击者就可以利用其绕过认证或者授权检查</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">重定向攻击可以试图安装恶意软件或者诱使受害人泄露密码等敏感信息</span><br><span class="line">通过转发可以绕过访问控制</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">避免使用重定向和转发</span><br><span class="line">如果使用了重定向和转发，则不要在确定的目标时涉及到用户参数</span><br><span class="line">如果无法避免使用目标参数，则应确保目标参数值对于当前用户是有效并且已经授权的</span><br><span class="line">可以使用request获得之前页面路径，然后判断是否为字符串类型</span><br><span class="line">如果是需要登陆的，则可以从session中获取登陆信息，然后判断</span><br></pre></td></tr></table></figure></p>
+<p><strong>9、使用含有已知漏洞的组件</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组件（例如：库、框架、和其他软件模块）运行和应用程序相同的权限。如果使用含有已知漏洞的组件，这样的攻击可以造成严重的数据丢失或服务器接管。使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">影响范围从最低的数据受损到主机被完全接管和数据泄露</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">移除不使用的依赖、不需要的功能、组件、文件和文档。</span><br><span class="line">利用工具入versions、DependencyCheck等来持续的记录客户端和服务器端以及他们的依赖库版本信息</span><br><span class="line">建立安全策略来管理组件的使用，如需要一定的软件开发实践，通过安全测试，和可接受的许可证</span><br><span class="line">仅从官方渠道获取组件并且在有条件的情况下尽可能采用单一包来避免被恶意篡改</span><br><span class="line">很多老的不再支持的库和组件并没有安全升级这种情况下可以考虑使用虚拟补丁技术去检测或保护</span><br></pre></td></tr></table></figure></p>
+<p><strong>10、敏感信息泄露</strong><br>描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">许多Web应用程序没有正确的保护敏感数据，如信用卡、税务ID和身份验证数据。攻击者可能会窃取或篡改这些弱保护的数据。所以敏感数据需要额外的保护，比如在存放或传输过程中进行加密，以及在与浏览器交换时进行特殊防御措施</span><br></pre></td></tr></table></figure></p>
+<p>影响：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">攻击者利用得到的敏感数据进行信用卡诈骗，身份窃取或其他犯罪</span><br><span class="line">网站的登陆用户名，密码、SSL证书、会话ID加密使用的密钥等，这些数据一旦泄露，攻击者就可以以合法身份访问Web系统，随意进行各种攻击操作</span><br><span class="line">Web服务器的OS类型，版本信息，Web容器名称，版本号，应用软件使用开源软件等，也属于敏感信息，因为攻击者知道这些信息，就会利用这些软件存在的公开漏洞进行专门攻击，提升了系统攻破的可能性。</span><br></pre></td></tr></table></figure></p>
+<p>预防方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">针对个人数据，必须加密存储，且要使用安全的加密算法，具体可区分为：</span><br><span class="line">	针对本地存储且需要密文明文转换的使用AES128及以上的安全加密算法</span><br><span class="line">	对于使用于认证场景的不需要可逆的可以采用SHA256及以上的安全HASH算法，如：PBKDF2等需要加盐值</span><br><span class="line">	而对于跨信任网络传输的敏感数据，需要使用非对称加密算法，公钥加密，私钥解密如RSA2048及以上算法</span><br><span class="line">	温馨提示：</span><br><span class="line">		常见的MD5、DES、SHA1，甚至不能算加密的BASE64编码都是非常不安全的。</span><br><span class="line"></span><br><span class="line">针对敏感数据的传输，需要采用SSL加密通道，每一个请求都应该使用SSL加密通道，因为每个请求里面都带有会话ID，并不只有涉及认证的请求才存在敏感数据。针对SSL通道，需要使用安全的TSL版本。同时要使用安全的加密套件。</span><br><span class="line"></span><br><span class="line">敏感信息禁止明文传递到Web客户端，能不传递就不要传递，禁止将敏感信息打印到堆栈或者日志中，禁止明文存在数据库中，同时保存敏感信息的文件要严格控制访问权限</span><br></pre></td></tr></table></figure></p>
+<h1 id="分布式拒绝攻击"><a href="#分布式拒绝攻击" class="headerlink" title="分布式拒绝攻击"></a>分布式拒绝攻击</h1><p>分布式拒绝攻击使用与普通拒绝服务攻击方法相同，但是发起的源是多个。通常，攻击者使用下载的工具渗透无保护的主机，当获得该主机的适当访问权限后，攻击者在主机中安装代理。这些代理保持睡眠状态，直到他们的主控端得到指令。主控端命令代理对指定目标发起拒绝服务攻击<br>分布式拒绝服务攻击是指主控端控制更多的僵尸电脑对同一个目标发起攻击。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OWASP/" rel="tag"># OWASP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/09/读取-显示并写入一个图片/" rel="next" title="读取/显示并写入一个图片">
+                <i class="fa fa-chevron-left"></i> 读取/显示并写入一个图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/31/Python线程池/" rel="prev" title="Python线程池">
+                Python线程池 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="入沐三分" />
+            
+              <p class="site-author-name" itemprop="name">入沐三分</p>
+              <p class="site-description motion-element" itemprop="description">入沐三分</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OWASP"><span class="nav-number">1.</span> <span class="nav-text">OWASP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OWASP-Top-10-十大风险"><span class="nav-number">2.</span> <span class="nav-text">OWASP Top 10 十大风险</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式拒绝攻击"><span class="nav-number">3.</span> <span class="nav-text">分布式拒绝攻击</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">入沐三分</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.3"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

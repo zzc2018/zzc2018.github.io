@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.3" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Python爬虫," />
+
+
+<meta name="description" content="项目说明:通过python的requests库快速编写一个爬虫,并将结果通过Django展示在网页上,实现实时的一个爬虫网站 目标网站: 美拍视频 本项目环境:12345- win10 64位- Python 3.6.3- requests- django 1.11.6- pycharm">
+<meta name="keywords" content="Python爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速完成一个Python爬虫网站">
+<meta property="og:url" content="https://zzc2018.description/2017/10/09/快速完成一个python爬虫网站/index.html">
+<meta property="og:site_name" content="入沐三分">
+<meta property="og:description" content="项目说明:通过python的requests库快速编写一个爬虫,并将结果通过Django展示在网页上,实现实时的一个爬虫网站 目标网站: 美拍视频 本项目环境:12345- win10 64位- Python 3.6.3- requests- django 1.11.6- pycharm">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkbl5mwxsnj311y0kjao1.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkblb3cmnmj311y0kjap4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkblntl9lsj311w0kg7l8.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkblu5ej79j30dw02zdfv.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkbn4uc2dyj31fg0es7ab.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkbneu5rbzj30e407lglz.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkbnfmjzolj30n707dgmd.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkborgucwej311y0kiwiz.jpg">
+<meta property="og:updated_time" content="2018-01-31T16:35:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速完成一个Python爬虫网站">
+<meta name="twitter:description" content="项目说明:通过python的requests库快速编写一个爬虫,并将结果通过Django展示在网页上,实现实时的一个爬虫网站 目标网站: 美拍视频 本项目环境:12345- win10 64位- Python 3.6.3- requests- django 1.11.6- pycharm">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006FDYMUly1fkbl5mwxsnj311y0kjao1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zzc2018.description/2017/10/09/快速完成一个python爬虫网站/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>快速完成一个Python爬虫网站 | 入沐三分</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">入沐三分</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">入沐三分</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-站点地图">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zzc2018.description/2017/10/09/快速完成一个python爬虫网站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="入沐三分">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="入沐三分">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">快速完成一个Python爬虫网站</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-09T05:53:33+08:00">2017-10-09</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python爬虫/" itemprop="url" rel="index"><span itemprop="name">Python爬虫</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明:"></a>项目说明:</h2><p>通过python的requests库快速编写一个爬虫,并将结果通过Django展示在网页上,实现实时的一个爬虫网站</p>
+<p>目标网站: 美拍视频</p>
+<h2 id="本项目环境"><a href="#本项目环境" class="headerlink" title="本项目环境:"></a>本项目环境:</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>win10 64位</span><br><span class="line"><span class="bullet">- </span>Python 3.6.3</span><br><span class="line"><span class="bullet">- </span>requests</span><br><span class="line"><span class="bullet">- </span>django 1.11.6</span><br><span class="line"><span class="bullet">- </span>pycharm</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p> <strong>我认为的爬虫第一步,就是抓包</strong></p>
+<p>好先抓首页</p>
+<p>首页的每一项内容都是静态的,也就是直接写在HTML代码中的</p>
+<p><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkbl5mwxsnj311y0kjao1.jpg" alt=""></p>
+<p>那么问题来了,打开源代码看看, 只有前边的啊, 当页面向下滚动的时候有新加载的内容.</p>
+<p>继续抓&gt;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkblb3cmnmj311y0kjap4.jpg" alt=""></p>
+<p>鼠标向下滑动,有接收到了一个名为 <strong>get_more_squares</strong> 的文件</p>
+<p>这就是我们要的文件了,在这里只是演示我们只要上边的 <strong>热门</strong></p>
+<p>进入热门页面</p>
+<p>上边还是一样,直接写在HTML里面</p>
+<p>鼠标向下滑动接收到 <strong>hot_timeline</strong> 里面就是一个个的视频页了<br><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkblntl9lsj311w0kg7l8.jpg" alt=""></p>
+<p><strong>下一步,分析request</strong><br>请求的URL是: <a href="http://www.meipai.com/home/hot_timeline" target="_blank" rel="noopener">http://www.meipai.com/home/hot_timeline</a><br>参数有两个: page 页码    count 是每页的数量<br><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkblu5ej79j30dw02zdfv.jpg" alt=""></p>
+<p><strong>接下来开始写代码</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_json</span><span class="params">(page)</span>:</span></span><br><span class="line">    <span class="comment"># 请求文件的地址</span></span><br><span class="line">    url = <span class="string">"http://www.meipai.com/home/hot_timeline"</span></span><br><span class="line">    <span class="comment"># 传入的参数</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">'page'</span>: page,</span><br><span class="line">        <span class="string">'count'</span>: <span class="number">12</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># requests.get(url, params=data)    通过requests请求到我们要的文件</span></span><br><span class="line">    <span class="comment"># .json()   将获取到的文件转换为一个列表形式</span></span><br><span class="line">    <span class="comment"># ['media'] 字典以键取值,我们要的东西都在这个里面所以直接取出来,其他的都不用</span></span><br><span class="line">    json_list = requests.get(url, params=data).json()[<span class="string">'medias'</span>]</span><br><span class="line">    <span class="comment"># 返回得到的列表</span></span><br><span class="line">    <span class="keyword">return</span> json_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wash</span><span class="params">(json_list)</span>:</span></span><br><span class="line">    <span class="comment"># 创建一个空列表</span></span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="comment"># 将传入的list迭代出来</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> json_list:</span><br><span class="line">        <span class="comment"># 创建一个字典,里面的键对应的是从i里面索引出来的数据</span></span><br><span class="line">        middle_dict = &#123;</span><br><span class="line">            <span class="comment"># 标题</span></span><br><span class="line">            <span class="string">'title'</span>: i[<span class="string">'caption'</span>],</span><br><span class="line">            <span class="comment"># 封面地址</span></span><br><span class="line">            <span class="string">'img_url'</span>: i[<span class="string">'cover_pic'</span>],</span><br><span class="line">            <span class="comment"># 作者ID</span></span><br><span class="line">            <span class="string">'author'</span>: i[<span class="string">'user'</span>][<span class="string">'screen_name'</span>],</span><br><span class="line">            <span class="comment"># 链接地址</span></span><br><span class="line">            <span class="string">'link_url'</span>: i[<span class="string">'url'</span>],</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># 将字典添加至 new_list</span></span><br><span class="line">        new_list.append(middle_dict)</span><br><span class="line">    <span class="comment"># 返回新的列表</span></span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = get_json(<span class="number">1</span>)</span><br><span class="line">    b = wash(a)</span><br><span class="line">    print(b)</span><br></pre></td></tr></table></figure></p>
+<p>我们运行一下试试<br><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkbn4uc2dyj31fg0es7ab.jpg" alt=""><br>很成功<br>到此我们已经可以获得想要的数据</p>
+<p><strong>通过Django部署到web</strong><br>新建一个Django项目<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject meipai</span><br></pre></td></tr></table></figure></p>
+<p>cd到项目目录,新建一个app<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py startapp meipai_app</span><br></pre></td></tr></table></figure></p>
+<p>在meipai_app中新建python project名为 <strong>script</strong><br>将我们刚才写的代码放进去,一会直接调用<br>好,开始写Django部分<br>打开settings.py, 在其中添加app, 注释掉csrf<br><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkbneu5rbzj30e407lglz.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkbnfmjzolj30n707dgmd.jpg" alt=""><br>在meipai_app/templates下新建HTML文件 <strong>index.html</strong> 内容如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        *&#123;</span></span><br><span class="line"><span class="undefined">            margin:0;</span></span><br><span class="line"><span class="undefined">            padding:0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        div&#123;</span></span><br><span class="line"><span class="undefined">            width: 90%;</span></span><br><span class="line"><span class="undefined">            margin: 30px auto;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        li&#123;</span></span><br><span class="line"><span class="undefined">            list-style: none;</span></span><br><span class="line"><span class="undefined">            border-bottom: 1px solid #000;</span></span><br><span class="line"><span class="undefined">            padding-top: 40px;</span></span><br><span class="line"><span class="undefined">            height: 100px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        img&#123;</span></span><br><span class="line"><span class="undefined">            width: 100px;</span></span><br><span class="line"><span class="undefined">            height: 100px;</span></span><br><span class="line"><span class="undefined">            float: left;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;#  将传过来的list迭代出来,并将每一条数据写入li里边  #&#125;</span><br><span class="line">    &#123;% for i in list %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; i.img_url &#125;&#125;"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>标题 : &#123;&#123; i.title &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>作者 : &#123;&#123; i.author &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; i.link_url &#125;&#125;"</span>&gt;</span>视频地址 : &#123;&#123; i.link_url &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;#  上一页, 传入的pageup是当前页码减一,下一页同理  #&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/?page=&#123;&#123; pageup &#125;&#125;"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/?page=&#123;&#123; pagedown &#125;&#125;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>编辑 <strong>meipai_app/views.py</strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> meipai_app.script.main <span class="keyword">import</span> get_json, wash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个视图函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 尝试获取请求中的page</span></span><br><span class="line">    <span class="comment"># 如果获取不到或者page&lt;1时 page=1</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        page = request.GET[<span class="string">'page'</span>]</span><br><span class="line">        <span class="keyword">if</span> page &lt; <span class="number">1</span>:</span><br><span class="line">            page = <span class="number">1</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        page = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 调用之前写的函数获取美拍热门视频的数据</span></span><br><span class="line">    json_l = get_json(page)</span><br><span class="line">    json_list = wash(json_l)</span><br><span class="line">    <span class="comment"># 将json_list, pageup, pagedown传给模板文件并渲染</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, context=&#123;<span class="string">'list'</span>: json_list, <span class="string">'pageup'</span>: int(page)<span class="number">-1</span>, <span class="string">'pagedown'</span>: int(page)+<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>编辑 <strong>urls.py</strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> meipai_app <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^'</span>, views.index)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>到目前为止基本就已经完成了<br>启动开发服务器:<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manager.py runserver 0.0.0.0:8080</span><br></pre></td></tr></table></figure></p>
+<p>然后浏览器访问就能看到成果了<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:8000</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ws1.sinaimg.cn/large/006FDYMUly1fkborgucwej311y0kiwiz.jpg" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>requests库的用法<br>Django简单页面<br>我们在这只是简单演示,其他的也都类似<br>不知道有没有人发现, 我们不能获取到视频的真是地址<br>其实在网页端的视频地址是先加密在用BASE64编码的.不太好获取<br>还有一种方法就是抓手机app的包, 也就是api<br>有兴趣的可以研究研究</p>
+<p>本文编辑历时 5小时49分钟</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python爬虫/" rel="tag"># Python爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/08/opcv-1/" rel="next" title="环境搭建">
+                <i class="fa fa-chevron-left"></i> 环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/09/读取-显示并写入一个图片/" rel="prev" title="读取/显示并写入一个图片">
+                读取/显示并写入一个图片 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="入沐三分" />
+            
+              <p class="site-author-name" itemprop="name">入沐三分</p>
+              <p class="site-description motion-element" itemprop="description">入沐三分</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目说明"><span class="nav-number">1.</span> <span class="nav-text">项目说明:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本项目环境"><span class="nav-number">2.</span> <span class="nav-text">本项目环境:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">入沐三分</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.3"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
