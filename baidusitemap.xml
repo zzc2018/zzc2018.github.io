@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+    
+    
+    
+  <url>
+    <loc>https://zzc2018.description/2017/11/30/10/</loc>
+    <lastmod>2018-02-06T17:15:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>OWASP Top 10</title>
+        <pubTime>2017-11-30T05:05:28.000Z</pubTime>
+        
+        <tag>OWASP</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络安全" url="https://zzc2018.description/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zzc2018.description/2018/01/31/Python%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <lastmod>2018-02-06T17:00:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python线程池</title>
+        <pubTime>2018-01-31T02:33:01.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://zzc2018.description/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zzc2018.description/2018/02/07/Python%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85shadowsocks/</loc>
+    <lastmod>2018-02-06T16:54:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python脚本一键安装shadowsocks</title>
+        <pubTime>2018-02-06T16:54:38.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zzc2018.description/2017/10/09/%E5%BF%AB%E9%80%9F%E5%AE%8C%E6%88%90%E4%B8%80%E4%B8%AApython%E7%88%AC%E8%99%AB%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2018-01-31T16:35:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>快速完成一个Python爬虫网站</title>
+        <pubTime>2017-10-08T21:53:33.000Z</pubTime>
+        
+        <tag>Python爬虫</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python爬虫" url="https://zzc2018.description/categories/Python%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zzc2018.description/2017/10/09/%E8%AF%BB%E5%8F%96-%E6%98%BE%E7%A4%BA%E5%B9%B6%E5%86%99%E5%85%A5%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2017-10-09T02:29:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>读取/显示并写入一个图片</title>
+        <pubTime>2017-10-09T08:14:05.000Z</pubTime>
+        
+        <tag>读取\显示并写入一个图片</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python-OpenCv" url="https://zzc2018.description/categories/Python-OpenCv/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zzc2018.description/2017/10/08/opcv-1/</loc>
+    <lastmod>2017-10-09T02:26:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>环境搭建</title>
+        <pubTime>2017-10-07T17:01:09.000Z</pubTime>
+        
+        <tag>环境安装</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python-OpenCv" url="https://zzc2018.description/categories/Python-OpenCv/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>
