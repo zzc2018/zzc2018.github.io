@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #380042;
+        }
+        #all{
+            margin: 300px auto;
+            width: 450px;
+            height: 300px;
+        }
+        a{
+            text-decoration: none;
+            color: #ffee89;
+        }
+        span{
+            font-size: 23px;
+            color: #b0ffa7;
+        }
+        input{
+            margin-right: 10px;
+            width: 300px;
+            height: 23px;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="all">
+    <span>QQ帐号&nbsp;:</span><br>
+<input type="text" name="" id="qqnum">
+    <br>
+    <span>QQKEY&nbsp;&nbsp;:</span><br>
+<input type="text" name="" id="qqkey">
+<br><br>
+<button style="width: 90px; height: 25px; border-radius: 3px;" onclick="getinput()">解析</button><br><br><br><br>
+    <a href="" id="qzone">QQ空间&nbsp;</a>
+    <a href="" id="qmail">QQ邮箱&nbsp;</a>
+    <a href="" id="qvideo">腾讯视频&nbsp;</a>
+</div>
+</body>
+</html>
+<script>
+    url1 = "https://ptlogin2.qq.com/jump?clientuin=";
+    url2 = "&clientkey=";
+    url3 = "&keyindex=9&u1=";
+    url4 = "https://qzone.qq.com/";
+    url5 = "https://v.qq.com";
+    url6 = "https://mail.qq.com";
+
+    function getinput(){
+        qqnum_input = document.getElementById("qqnum");
+        qqkey_input = document.getElementById("qqkey");
+        qzone_a = document.getElementById("qzone");
+        qmail_a = document.getElementById("qmail");
+        qvideo_a = document.getElementById("qvideo");
+        qzone_a.href = url1 + qqnum_input.value + url2 + qqkey_input.value + url3 + url4;
+        qmail_a.href = url1 + qqnum_input.value + url2 + qqkey_input.value + url3 + url6;
+        qvideo_a.href = url1 + qqnum_input.value + url2 + qqkey_input.value + url3 + url5;
+    }
+
+
+
+</script>
